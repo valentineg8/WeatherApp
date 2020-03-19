@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:utils="clr-namespace:WeatherApp.Utils"
+             x:Class="WeatherApp.Controls.TodayChangesSection">
+    <ScrollView>
+        <StackLayout 
+                    Padding="10">
+            <StackLayout Orientation="Horizontal">
+                    <yummy:PancakeView BackgroundColor="#f7f3ff"
+                                        VerticalOptions="CenterAndExpand"
+                                        HeightRequest="50"
+                                        WidthRequest="50"
+                                        CornerRadius="25">
+                        <Label Text="{x:Static utils:MaterialDesignIcons.WeatherPouring}"
+                                FontFamily="{StaticResource MaterialFontFamily}"
+                                TextColor="{StaticResource primaryColor}"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                FontSize="Title" />
+                    </yummy:PancakeView>
+                    <Label Text="Rain with short storms"
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="CenterAndExpand"/>
+
+                    <yummy:PancakeView BackgroundColor="#ffeef3"
+                                        VerticalOptions="CenterAndExpand"
+                                        HeightRequest="50"
+                                        WidthRequest="50"
+                                        CornerRadius="25">
+                        <Label Text="{x:Static utils:MaterialDesignIcons.WeatherWindy}"
+                                FontFamily="{StaticResource MaterialFontFamily}"
+                                TextColor="{StaticResource secondaryColor}"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                FontSize="Title" />
+                    </yummy:PancakeView>
+                    <Label Text="Wind EN 8 km/h"
+                            VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                            Margin="0, 20"
+                            Spacing="0">
+                <FlexLayout BindableLayout.ItemsSource="{Binding WeatherSchedule}"
+                            Direction="Column"
+                            HorizontalOptions="FillAndExpand"
+                            Wrap="NoWrap">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HeightRequest="50">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding Time}"
+                                        TextColor="#c0c0cd"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label"
+                                                        Binding="{Binding IsCurrentTime}"
+                                                        Value="True">
+                                            <Setter Property="TextColor"
+                                                    Value="#773ad8"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                <BoxView HorizontalOptions="FillAndExpand"
+                                            HeightRequest="1"
+                                            Grid.Row="1"
+                                            BackgroundColor="#DDD"/>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+                <FlexLayout BindableLayout.ItemsSource="{Binding WeatherScheduleIcon}"
+                            Direction="Column"
+                            HorizontalOptions="Center"
+                            Wrap="NoWrap">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <yummy:PancakeView BackgroundColor="{Binding IconColor}"
+                                                VerticalOptions="EndAndExpand"
+                                                CornerRadius="20, 20, 0, 20"
+                                                Margin="0, 10">
+                                <yummy:PancakeView.Triggers>
+                                    <DataTrigger TargetType="yummy:PancakeView"
+                                                    Binding="{Binding Hours}"
+                                                    Value="4">
+                                        <Setter Property="HeightRequest"
+                                                Value="200"/>
+                                    </DataTrigger>
+                                        <DataTrigger TargetType="yummy:PancakeView"
+                                                    Binding="{Binding Hours}"
+                                                    Value="5">
+                                        <Setter Property="HeightRequest"
+                                                Value="250"/>
+                                    </DataTrigger>
+                                </yummy:PancakeView.Triggers>
+                                <Image Source="{Binding Icon}" />
+                            </yummy:PancakeView>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+                <FlexLayout BindableLayout.ItemsSource="{Binding WeatherSchedule}"
+                            Direction="Column"
+                            HorizontalOptions="FillAndExpand"
+                            Wrap="NoWrap">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HeightRequest="50">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{Binding Icon}"
+                                        FontSize="Large"
+                                        FontFamily="{x:StaticResource MaterialFontFamily}"
+                                        TextColor="#c0c0cd">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label"
+                                                        Binding="{Binding IsCurrentTime}"
+                                                        Value="True">
+                                            <Setter Property="TextColor"
+                                                    Value="#773ad8"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                <Label Text="{Binding Temparature}"
+                                        TextColor="#c0c0cd"
+                                        VerticalOptions="CenterAndExpand"
+                                        Grid.Column="1">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label"
+                                                        Binding="{Binding IsCurrentTime}"
+                                                        Value="True">
+                                            <Setter Property="TextColor"
+                                                    Value="#773ad8"/>
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                                          
+                                <BoxView HorizontalOptions="FillAndExpand"
+                                            HeightRequest="1"
+                                            Grid.Row="1"
+                                            Grid.ColumnSpan="2"
+                                            BackgroundColor="#DDD"/>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentView>

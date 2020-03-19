@@ -7,5 +7,32 @@
                         mc:Ignorable="d"
                         x:Class="WeatherApp.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="primaryColor">#773ad8</Color>
+            <Color x:Key="secondaryColor">#ff5581</Color>
+            <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Material Design Icons" />
+                <On Platform="Android" Value="materialdesignicons-webfont.ttf#Material Design Icons" />
+            </OnPlatform>
+            <Style x:Key="menuButtonStyle"
+                   TargetType="Button">
+                <Setter Property="BackgroundColor"
+                        Value="Transparent"/>
+                <Setter Property="VerticalOptions"
+                        Value="CenterAndExpand"/>
+                <Setter Property="HeightRequest"
+                        Value="50"/>
+                <Setter Property="WidthRequest"
+                        Value="50"/>
+                <Setter Property="CornerRadius"
+                        Value="25"/>
+                <Setter Property="FontSize"
+                        Value="Large"/>
+                <Setter Property="FontFamily"
+                        Value="{StaticResource MaterialFontFamily}"/>
+                <Setter Property="TextColor"
+                        Value="{StaticResource secondaryColor}" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

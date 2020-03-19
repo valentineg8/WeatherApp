@@ -140,6 +140,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\raining.png" />
+    <BundleResource Include="Resources\materialdesignicons-webfont.ttf" />
+    <BundleResource Include="Resources\walking_dog.png" />
+    <BundleResource Include="Resources\woman_raining.png" />
   </ItemGroup>
 </Project>
