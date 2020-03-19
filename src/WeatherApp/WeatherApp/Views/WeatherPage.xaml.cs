@@ -59,8 +59,6 @@ namespace WeatherApp.Views
                 if (section == "today")
                 {
                     citiesDetailBtn.FadeTo(1, 200, Easing.Linear);
-                    todayChangesSection.FadeTo(0, 200, Easing.SinIn);
-                    todayChangesSection.IsVisible = false;
 
                     temperatureSubTitle.FadeTo(1, 200, Easing.Linear);
                     parentAnimation.Add(0, 1, new Animation(v => temperatureTitle.FontSize = v, 40, 65, Easing.SpringOut));
@@ -97,8 +95,8 @@ namespace WeatherApp.Views
                 if (section == "today")
                 {
                     citiesDetailBtn.FadeTo(0, 200, Easing.SinIn);
-                    todayChangesSection.IsVisible = true;
-                    todayChangesSection.FadeTo(1, 200, Easing.SinIn);
+
+
                     temperatureSubTitle.FadeTo(0, 200, Easing.SinIn);
                     parentAnimation.Add(0, 1, new Animation(v => temperatureTitle.FontSize = v, 65, 40, Easing.CubicInOut));
                     parentAnimation.Add(0, 1, new Animation(v => temperatureTitle.TranslationX = v, temperatureTitle.TranslationX, 50, Easing.CubicInOut));
